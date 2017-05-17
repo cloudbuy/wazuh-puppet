@@ -77,6 +77,10 @@ class wazuh::client(
         require         => File['C:/wazuh-agent-2.0.exe'],
       }
     }
+    'openbsd': {
+      package { $agent_package_name:
+      }
+    }
     default: { fail('OS not supported') }
   }
 
