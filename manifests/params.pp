@@ -166,6 +166,30 @@ class wazuh::params {
       # Pushed by shared agent config now
       $default_local_files = {}
     }
+    'openbsd': {
+      $config_file = '/var/ossec/etc/ossec.conf'
+      $shared_agent_config_file = '/var/ossec/etc/shared/agent.conf'
+
+      $config_mode = '0440'
+      $config_owner = 'root'
+      $config_group = '_ossec'
+
+      $keys_file = '/var/ossec/etc/client.keys'
+      $keys_mode = '0440'
+      $keys_owner = 'root'
+      $keys_group = '_ossec'
+
+      $agent_service  = 'wazuh-agent'
+      $agent_package  = 'wazuh-agent'
+      $server_service = ''
+      $server_package = ''
+      $service_has_status  = true
+
+      $validate_cmd_shared_conf = "/var/ossec/bin/verify-agent-conf -f ${shared_agent_config_file}"
+      $validate_cmd_ossec_conf = "/var/ossec/bin/verify-agent-conf -f ${config_file}"
+      # Pushed by shared agent config now
+      $default_local_files = {}
+    }
   default: { fail('This ossec module has not been tested on your distribution') }
   }
 }
