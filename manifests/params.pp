@@ -187,8 +187,15 @@ class wazuh::params {
 
       $validate_cmd_shared_conf = "/var/ossec/bin/verify-agent-conf -f ${shared_agent_config_file}"
       $validate_cmd_ossec_conf = "/var/ossec/bin/verify-agent-conf -f ${config_file}"
-      # Pushed by shared agent config now
-      $default_local_files = {}
+
+      $default_local_files = {
+        '/var/log/authlog'                     => 'syslog',
+        '/var/log/daemon'                      => 'syslog',
+        '/var/log/maillog'                     => 'syslog',
+        '/var/log/messages'                    => 'syslog',
+        '/var/log/secure'                      => 'syslog',
+        '/var/ossec/logs/active-responses.log' => 'syslog',
+      }
     }
   default: { fail('This ossec module has not been tested on your distribution') }
   }
