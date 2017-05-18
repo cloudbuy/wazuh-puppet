@@ -179,7 +179,7 @@ class wazuh::params {
       $keys_owner = 'root'
       $keys_group = '_ossec'
 
-      $agent_service  = 'wazuh-agent'
+      $agent_service  = 'wazuhagentd'
       $agent_package  = 'wazuh-agent'
       $server_service = ''
       $server_package = ''
