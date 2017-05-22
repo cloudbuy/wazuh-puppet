@@ -24,6 +24,18 @@
   </localfile>
 </agent_config>
 
+<agent_config os="OpenBSD">
+  <%= scope.function_template(["wazuh/fragments/_rootcheck_openbsd.erb"]) %>
+
+  <%= scope.function_template(["wazuh/fragments/_syscheck_openbsd.erb"]) %>
+
+  <!-- Log analysis -->
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/ossec/logs/active-responses.log</location>
+  </localfile>
+</agent_config>
+
 <agent_config os="Windows">
   <%= scope.function_template(["wazuh/fragments/_rootcheck_windows.erb"]) %>
 
